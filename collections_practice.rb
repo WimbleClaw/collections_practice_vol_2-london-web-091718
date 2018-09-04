@@ -63,8 +63,8 @@ end
 def organize_schools (hash)
   organised = {}
   hash.each do |school, location_hash|
-    binding.pry
-    location_hash.sort
-    
+
+    location = location_hash[:location]
+   
   end
 end
