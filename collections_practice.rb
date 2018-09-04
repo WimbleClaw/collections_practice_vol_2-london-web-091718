@@ -61,7 +61,7 @@ end
 #organize_schools organizes the schools by location
 
 def organize_schools (hash)
-  organised = []
+  organised = {}
   hash.each do |school, location_hash|
     location_hash.sort
   end
