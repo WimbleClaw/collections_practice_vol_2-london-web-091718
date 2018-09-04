@@ -64,5 +64,6 @@ def organize_schools (hash)
   organised = {}
   hash.each do |school, location_hash|
     location_hash.sort
+    binding.pry
   end
 end
