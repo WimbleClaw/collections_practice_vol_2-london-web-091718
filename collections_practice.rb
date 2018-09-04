@@ -1,3 +1,5 @@
+require 'pry'
+
 #begins_with_r Return true if every element ofthe tools array starts with an "r" and false otherwise.
 
 def begins_with_r(array)
@@ -31,19 +33,43 @@ end
 
 #merge_data combines two nested data structures into one
 
-def merge_data(keys, values)
-  keys << values
+def merge_data(keys, data)
+  merged = []
+  keys.each do |hash|
+    first_name = hash[:first_name]
+    data.each do |info|
+      details = info[first_name]
+      details[:first_name] = first_name
+      merged.push(details)
+    end
+  end
+  merged
 end
 
 #find_cool find all cool hashes
 
-def find_cool(hash)
-  hash.select do |key, value| value == "cool"
-  end
+def find_cool(array)
+  cool = []
+ array.select do |element|
+   if element[:temperature] == "cool"
+    cool.push(element)
+    end
+   end 
+  cool
 end
 
 #organize_schools organizes the schools by location
 
 def organize_schools (hash)
- hash.sort.to_h
+  organised = {}
+  hash.each do |school, location_hash|
+    location = location_hash[:location]
+      if organised[location]
+        organised[location] << school
+      else 
+        organised[location] = []
+        organised[location] << school
+      end
+  end
+  organised
 end
